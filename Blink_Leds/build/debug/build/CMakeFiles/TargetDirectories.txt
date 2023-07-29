@@ -1,0 +1,3 @@
+C:/Users/leone/Desktop/Cursos/STM32 Bare Metal/Blink_Leds/build/debug/build/CMakeFiles/edit_cache.dir
+C:/Users/leone/Desktop/Cursos/STM32 Bare Metal/Blink_Leds/build/debug/build/CMakeFiles/Blink_Leds.dir
+C:/Users/leone/Desktop/Cursos/STM32 Bare Metal/Blink_Leds/build/debug/build/CMakeFiles/rebuild_cache.dir

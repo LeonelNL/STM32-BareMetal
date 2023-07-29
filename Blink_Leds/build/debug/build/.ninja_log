@@ -1,0 +1,10 @@
+# ninja log v5
+0	39	7122940881210174	CMakeFiles/Blink_Leds.dir/Startup/startup_stm32f401retx.s.obj	d7e047acd5d68867
+7	60	7122940881420593	CMakeFiles/Blink_Leds.dir/Src/sysmem.c.obj	4f927098e94bcdf2
+3	55	7122940881372434	CMakeFiles/Blink_Leds.dir/Src/main.c.obj	48a503d5675c3da3
+84	215	7122940882329545	Blink_Leds.elf	a112e6fd896f7a62
+10	84	7122940881667095	CMakeFiles/Blink_Leds.dir/Src/syscalls.c.obj	393934039735d6a5
+1	49	7122942056869917	CMakeFiles/Blink_Leds.dir/Src/main.c.obj	48a503d5675c3da3
+49	155	7122942057505412	Blink_Leds.elf	a112e6fd896f7a62
+0	45	7122942453770073	CMakeFiles/Blink_Leds.dir/Src/main.c.obj	48a503d5675c3da3
+45	151	7122942454406966	Blink_Leds.elf	a112e6fd896f7a62
