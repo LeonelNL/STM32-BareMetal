@@ -27,6 +27,7 @@
 
 int main(void)
 {
+  uint32_t cont = 0;
   uint32_t *p_ClockEnableGPIOA   = (uint32_t *)(RCC_BASE + RCC_OFFSET);
   uint32_t *p_RegisterModerGPIOA = (uint32_t *)(GPIOA_BASE + MODER_OFFSET);
   uint32_t *p_RegisterOdrGPIOA   = (uint32_t *)(GPIOA_BASE + ODR_OFFSET);
@@ -34,10 +35,12 @@ int main(void)
   *p_ClockEnableGPIOA   |= 0x00000001;                                          // Enable clock GPIO port A
   *p_RegisterModerGPIOA &= 0xFFFFF3FF;                                          // Ensure values start in 0
   *p_RegisterModerGPIOA |= 0x00000400;                                          // Set General purpose output mode in pin 5 (MODER5)
-  *p_RegisterOdrGPIOA   |= 0x00000020;									                        // Set pin 5 on ON (ODR5)
-
-    /* Loop forever */
-	while (1){
-
+  
+	while(1)
+  {
+    *p_RegisterOdrGPIOA   |=   0x00000020;									                    // Set pin 5 on ON (ODR5)
+    for(cont = 0; cont < 500000; cont++);
+    *p_RegisterOdrGPIOA   &= ~(0x00000020);									                    // Set pin 5 on OFF (ODR5)
+    for(cont = 0; cont < 500000; cont++);
 	}
 }
