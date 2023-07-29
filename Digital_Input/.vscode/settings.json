@@ -1,0 +1,9 @@
+{
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "cmake.configureOnOpen": true,
+  "files.associations": {
+    "globaldefine.h": "c",
+    "stdint.h": "c",
+    "stdint-gcc.h": "c"
+  }
+}

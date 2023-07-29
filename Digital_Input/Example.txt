@@ -1,0 +1,90 @@
+#include <stdio.h>
+// Define the base addresses of the GPIO ports
+#define GPIOA_BASE 0x40020000
+#define GPIOC_BASE 0x40020800
+
+// Define the offsets of the GPIO registers
+#define GPIO_MODER_OFFSET 0x00
+#define GPIO_OTYPER_OFFSET 0x04
+#define GPIO_OSPEEDR_OFFSET 0x08
+#define GPIO_PUPDR_OFFSET 0x0C
+#define GPIO_IDR_OFFSET 0x10
+#define GPIO_ODR_OFFSET 0x14
+#define GPIO_BSRR_OFFSET 0x18
+
+// Define the bit positions of the LED and button pins
+#define LED_PIN 5
+#define BUTTON_PIN 13
+
+// Define some helper macros to access the GPIO registers
+#define GPIO_MODER(port) (*(volatile uint32_t *)(port + GPIO_MODER_OFFSET))
+#define GPIO_OTYPER(port) (*(volatile uint32_t *)(port + GPIO_OTYPER_OFFSET))
+#define GPIO_OSPEEDR(port) (*(volatile uint32_t *)(port + GPIO_OSPEEDR_OFFSET))
+#define GPIO_PUPDR(port) (*(volatile uint32_t *)(port + GPIO_PUPDR_OFFSET))
+#define GPIO_IDR(port) (*(volatile uint32_t *)(port + GPIO_IDR_OFFSET))
+#define GPIO_ODR(port) (*(volatile uint32_t *)(port + GPIO_ODR_OFFSET))
+#define GPIO_BSRR(port) (*(volatile uint32_t *)(port + GPIO_BSRR_OFFSET))
+
+// Define the base address of the RCC peripheral
+#define RCC_BASE 0x40023800
+
+// Define the offset of the RCC AHB1ENR register
+#define RCC_AHB1ENR_OFFSET 0x30
+
+// Define the bit positions of the RCC AHB1ENR register
+#define RCC_AHB1ENR_GPIOAEN 0
+#define RCC_AHB1ENR_GPIOCEN 2
+
+// Define a helper macro to access the RCC AHB1ENR register
+#define RCC_AHB1ENR (*(volatile uint32_t *)(RCC_BASE + RCC_AHB1ENR_OFFSET))
+
+void init_led(void) {
+  // Enable the clock for the LED port
+  RCC_AHB1ENR |= (1 << RCC_AHB1ENR_GPIOAEN);
+
+  // Configure the LED pin as output
+  GPIO_MODER(GPIOA_BASE) &= ~(0x3 << (LED_PIN * 2)); // Clear the mode bits for the LED pin
+  GPIO_MODER(GPIOA_BASE) |= (0x1 << (LED_PIN * 2)); // Set the mode bits to output mode
+
+  // Configure the LED pin as push-pull
+  GPIO_OTYPER(GPIOA_BASE) &= ~(0x1 << LED_PIN); // Clear the output type bit for the LED pin
+
+  // Configure the LED pin as high speed
+  GPIO_OSPEEDR(GPIOA_BASE) &= ~(0x3 << (LED_PIN * 2)); // Clear the speed bits for the LED pin
+  GPIO_OSPEEDR(GPIOA_BASE) |= (0x3 << (LED_PIN * 2)); // Set the speed bits to high speed mode
+
+  // Configure the LED pin as no pull-up/pull-down
+  GPIO_PUPDR(GPIOA_BASE) &= ~(0x3 << (LED_PIN * 2)); // Clear the pull-up/pull-down bits for the LED pin
+}
+
+void init_button(void) {
+  // Enable the clock for the button port
+  RCC_AHB1ENR |= (1 << RCC_AHB1ENR_GPIOCEN);
+
+  // Configure the button pin as input
+  GPIO_MODER(GPIOC_BASE) &= ~(0x3 << (BUTTON_PIN * 2)); // Clear the mode bits for the button pin
+
+  // Configure the button pin as pull-up
+    GPIO_PUPDR(GPIOC_BASE) &= ~(0x3 << (BUTTON_PIN * 2)); // Clear the pull-up/pull-down bits for the button pin
+  GPIO_PUPDR(GPIOC_BASE) |= (0x1 << (BUTTON_PIN * 2)); // Set the pull-up bit for the button pin
+}
+
+int main(void) {
+  // Initialize the LED and button pins
+  init_led();
+  init_button();
+
+  while (1) {
+    // Read the button state
+    int button_state = GPIO_IDR(GPIOC_BASE) & (1 << BUTTON_PIN);
+
+    // Toggle the LED state based on the button state
+    if (button_state) {
+      // Turn off the LED
+      GPIO_BSRR(GPIOA_BASE) = (1 << (LED_PIN + 16));
+    } else {
+      // Turn on the LED
+      GPIO_BSRR(GPIOA_BASE) = (1 << LED_PIN);
+    }
+  }
+}

@@ -1,0 +1,9 @@
+#define GPIOA_BASE      0x40020000
+#define GPIOC_BASE      0x40020800
+#define IDR_OFFSET      0x10
+#define MODER_OFFSET    0x00
+#define ODR_OFFSET	    0x14
+#define OTYPER_OFFSET   0x04
+#define PUPDR_OFFSET    0x0C
+#define RCC_AHB1_BASE 	0x40023800
+#define RCC_AHB1_OFFSET 0x30

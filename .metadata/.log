@@ -102,3 +102,49 @@ C Model Exception: C Model Status [Element main.c does not exist.]
 	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
 !SUBENTRY 1 org.eclipse.cdt.core 4 969 2023-07-28 18:38:37.576
 !MESSAGE Element main.c does not exist.
+!SESSION 2023-07-28 23:15:12.853 -----------------------------------------------
+eclipse.buildId=Version 1.12.1
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-07-28 23:15:19.358
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-07-28 23:15:19.359
+!MESSAGE Log4j2 initialized with config file C:\Users\leone\Desktop\Cursos\STM32 Bare Metal\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-07-28 23:15:23.733
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-07-28 23:16:41.347
+!MESSAGE Indexed 'Digital_Input' (0 sources, 0 headers) in 0.001 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-07-28 23:16:42.402
+!MESSAGE Indexed 'Digital_Input' (3 sources, 53 headers) in 0.406 sec: 1,949 declarations; 2,832 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.core.jobs 4 2 2023-07-28 23:18:35.413
+!MESSAGE An internal error occurred during: "Fetch Toolchain List...".
+!STACK 0
+java.lang.NullPointerException
+	at com.st.stm32cube.ide.mcu.p2.Activator.isDebuggingStatic(Activator.java:54)
+	at com.st.stm32cube.ide.mcu.p2.P2Utils.getInstallableUnits(P2Utils.java:289)
+	at com.st.stm32cube.ide.mcu.p2.P2Utils.getInstallableUnits(P2Utils.java:181)
+	at com.st.stm32cube.ide.mcu.toolchain.ui.preferences.MCUToolchainManagerPreferencePage$12.run(MCUToolchainManagerPreferencePage.java:759)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2023-07-28 23:18:35.669 -----------------------------------------------
+eclipse.buildId=Version 1.12.1
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_MX
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-07-28 23:18:40.342
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-07-28 23:18:40.343
+!MESSAGE Log4j2 initialized with config file C:\Users\leone\Desktop\Cursos\STM32 Bare Metal\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-07-28 23:18:44.609
+!MESSAGE Started RMI Server, listening on port 41337

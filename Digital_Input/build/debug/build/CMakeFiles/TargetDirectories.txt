@@ -1,0 +1,3 @@
+C:/Users/leone/Desktop/Cursos/STM32 Bare Metal/Digital_Input/build/debug/build/CMakeFiles/edit_cache.dir
+C:/Users/leone/Desktop/Cursos/STM32 Bare Metal/Digital_Input/build/debug/build/CMakeFiles/Digital_Input.dir
+C:/Users/leone/Desktop/Cursos/STM32 Bare Metal/Digital_Input/build/debug/build/CMakeFiles/rebuild_cache.dir
